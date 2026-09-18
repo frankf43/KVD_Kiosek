@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from urllib.request import urlopen, Request
 from urllib.error import URLError
 from datetime import date, timedelta, datetime
@@ -208,9 +209,15 @@ class RolovaciKarta:
 # --- GUI Rozhraní ---
 
 okno = tkinter.Tk()
-okno.attributes('-fullscreen', True)
 okno.configure(bg="#f4f6f4")
 okno.bind("<Escape>", lambda e: okno.destroy())
+
+def aktivuj_fullscreen():
+    okno.attributes('-fullscreen', True)
+    okno.focus_force()
+
+# Odložený fullscreen o 1500 ms – vyřeší souběh při nabíhání plochy po rebootu
+okno.after(1500, aktivuj_fullscreen)
 
 COLOR_KVD_GREEN = "#4d8334"
 COLOR_KVD_ACCENT = "#87be69"
