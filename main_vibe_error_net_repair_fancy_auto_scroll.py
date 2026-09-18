@@ -210,10 +210,12 @@ class RolovaciKarta:
 
 okno = tkinter.Tk()
 okno.configure(bg="#f4f6f4")
+okno.config(cursor="none")  # Skrytí kurzoru myši
 okno.bind("<Escape>", lambda e: okno.destroy())
 
 def aktivuj_fullscreen():
     okno.attributes('-fullscreen', True)
+    okno.config(cursor="none")  # Pojistka pro skrytí po roztažení na celou plochu
     okno.focus_force()
 
 # Odložený fullscreen o 1500 ms – vyřeší souběh při nabíhání plochy po rebootu
